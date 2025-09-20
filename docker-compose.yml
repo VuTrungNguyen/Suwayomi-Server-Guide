@@ -1,0 +1,21 @@
+services:
+  suwayomi_server:
+    image: ghcr.io/suwayomi/suwayomi-server:stable
+    container_name: Suwayomi-Server
+    volumes: # The order matters! Make sure the downloads is first in the volume list or it will not work!
+      - ./docker-data/downloads:/home/suwayomi/.local/share/Tachidesk/downloads
+      - ./docker-data/data:/home/suwayomi/.local/share/Tachidesk
+    ports:
+      - 4568:4567
+    restart: unless-stopped
+    environment:
+      - TZ=UTC
+      # Optional: Additional Java arguments
+      # - JAVA_OPTS=-Xmx2g -Xms512m
+    # Optional: Resource limits
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 2G
+    #     reservations:
+    #       memory: 512M

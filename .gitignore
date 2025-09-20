@@ -21,3 +21,8 @@ scripts/zulu*
 scripts/electron-*
 scripts/rcedit-*
 scripts/resources/*.so
+
+# Local deployment and runtime files
+docker-data/
+*.log
+hs_err_pid*.log
